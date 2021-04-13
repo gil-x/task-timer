@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Timer.gd" type="Script" id=1]
+[ext_resource path="res://Stopwatch.gd" type="Script" id=1]
 
-[node name="Timer" type="Control"]
+[node name="Stopwatch" type="Control"]
 anchor_top = -0.00117854
 anchor_right = 1.0
 anchor_bottom = 0.998821
@@ -14,6 +14,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="Timer" parent="."]
 
 [node name="Panel" type="Panel" parent="."]
 margin_top = 2.12131
@@ -45,7 +47,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="HBoxContainer1" type="HBoxContainer" parent="Panel"]
 anchor_top = 0.4
 anchor_right = 1.0
 anchor_bottom = 0.52
@@ -55,7 +57,7 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Start" type="Button" parent="Panel/HBoxContainer"]
+[node name="Start" type="Button" parent="Panel/HBoxContainer1"]
 margin_left = 18.0
 margin_right = 98.0
 margin_bottom = 30.0
@@ -67,7 +69,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Stop" type="Button" parent="Panel/HBoxContainer"]
+[node name="Stop" type="Button" parent="Panel/HBoxContainer1"]
 margin_left = 102.0
 margin_right = 182.0
 margin_bottom = 30.0
@@ -77,3 +79,25 @@ text = "Stop"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel"]
+anchor_top = 0.46
+anchor_right = 1.0
+anchor_bottom = 0.58
+margin_top = 20.0002
+margin_bottom = 20.0002
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Reset" type="Button" parent="Panel/HBoxContainer2"]
+margin_left = 60.0
+margin_right = 140.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 80, 30 )
+mouse_default_cursor_shape = 2
+text = "Reset"
+[connection signal="pressed" from="Panel/HBoxContainer1/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer1/Stop" to="." method="_on_Stop_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer2/Reset" to="." method="_on_Reset_pressed"]
