@@ -6,7 +6,10 @@ var time = 0
 func _ready():
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
 	$Timer.set_wait_time(1.0)
-	
+
+
+func _init_(name : String):
+	$Panel/Name.text = name
 
 func _on_Timer_timeout():
 	add_1_second()
@@ -21,7 +24,11 @@ func get_hms_time(time_in_seconds):
 	var hours = int(time_in_seconds / 60 / 60)
 	var minutes = int(time_in_seconds / 60) - (hours * 60)
 	var seconds = time_in_seconds % 60
-	return "{h}:{m}:{s}".format({ "h": "%02d" % hours, "m": "%02d" % minutes, "s": "%02d" % seconds })
+	return "{h}:{m}:{s}".format({
+			"h": "%02d" % hours,
+			"m": "%02d" % minutes,
+			"s": "%02d" % seconds
+		})
 
 
 func update_display():
